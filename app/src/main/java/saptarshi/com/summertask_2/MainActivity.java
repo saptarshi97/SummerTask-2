@@ -2,6 +2,9 @@ package saptarshi.com.summertask_2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,7 +22,13 @@ public class MainActivity extends AppCompatActivity {
         ImageView image=(ImageView)findViewById(R.id.main_image_view);
         Picasso.with(this).load(url).into(image);
     }
-    public void reload(View v){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    public void reload(MenuItem v){
         Picasso picasso = Picasso.with(this);
         picasso.invalidate(url);
         image=(ImageView)findViewById(R.id.main_image_view);
